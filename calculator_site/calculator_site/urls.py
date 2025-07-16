@@ -16,8 +16,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from app.views import CalculatorView
+from app.views import CalculatorView,CalculatorAPIView
+from django.urls import path, include
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', CalculatorView.as_view(), name='index'),
+    path('api/calculate/', CalculatorAPIView.as_view(), name='calculator-api'),
+    path('accounts/', include('django.contrib.auth.urls')),
+
 ]
